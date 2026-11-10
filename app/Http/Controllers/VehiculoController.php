@@ -36,8 +36,8 @@ class VehiculoController extends Controller
             'model'=>'required|string|max:255|min:3',
             'vehicle_type'=>'required|string|max:255|min:3',
             'color'=>'required|string|max:255|min:3',
-            'capacity'=>'required|string|max:255|min:3',
-            'daily_rate'=>'required|string|max:255|min:3',
+            'capacity'=>'required|numeric|max:255|min:3',
+            'daily_rate'=>'required|max:255|min:3',
             'status'=>'required|string|max:255|min:3',
         ]);
 
@@ -67,7 +67,20 @@ class VehiculoController extends Controller
      */
     public function update(Request $request, Vehiculo $vehiculo)
     {
-        //
+        $validated=$request->validate([
+            'plate_number'=>'required|string|max:255|min:3',
+            'brand'=>'required|string|max:255|min:3',
+            'model'=>'required|string|max:255|min:3',
+            'vehicle_type'=>'required|string|max:255|min:3',
+            'color'=>'required|string|max:255|min:3',
+            'capacity'=>'required|string|max:255|min:3',
+            'daily_rate'=>'required|string|max:255|min:3',
+            'status'=>'required|string|max:255|min:3',
+        ]);
+
+        $vehiculo->update($validated);
+
+        return redirect()->route('vehiculos.index')->with('status', 'Cliente actualizado');
     }
 
     /**

@@ -10,3 +10,4 @@ Route::get('/', function () {
 
 Route::get('/vehiculos', [VehiculoController::class, 'index'])->name('vehiculos.index');
 Route::post('/vehiculos', [VehiculoController::class, 'store'])->name('vehiculos.store');
+Route::put('/vehiculos{vehiculo}', [VehiculoController::class, 'update'])->name('vehiculos.update');
